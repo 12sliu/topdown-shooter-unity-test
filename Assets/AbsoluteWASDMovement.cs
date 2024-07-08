@@ -11,21 +11,19 @@ public class AbsoluteWASDMovement : MonoBehaviour
     void Start()
     {
         controller = gameObject.AddComponent<CharacterController>();
-        Debug.Log("I exist!"); 
     }
 
     void Update()
     {
+        // MODIFICATION
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
         playerVelocity = playerVelocity + new Vector3(
             move.x * Time.deltaTime * playerAcceleration, 
             move.y * Time.deltaTime * playerAcceleration,
-            0);
+            0); 
         
         // caps playerVelocity
         playerVelocity = playerVelocity.normalized * Math.Min(playerVelocity.magnitude, playerMaxVelocity);
-        Debug.Log(playerVelocity); 
-        Debug.Log("I exist!"); 
         controller.Move(playerVelocity * Time.deltaTime);        
         // controller.Move(new Vector3(1, 0, 1));
     }    
